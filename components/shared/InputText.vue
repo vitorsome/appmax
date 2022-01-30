@@ -1,12 +1,12 @@
 <template>
   <div class="container-input">
       <label :for="id"> {{ this.label }}</label>
-      <input :id="id" type="text" :placeholder="placeholder" :value="value"/>
+      <input :id="id" :placeholder="placeholder" :value="value" :type="type || 'text'"/>
   </div>
 </template>
 <script>
 export default {
-    props: ['id', 'label', 'placeholder', 'value'],
+    props: ['id', 'label', 'placeholder', 'value', 'type'],
     name: 'InputText'
 }
 </script>

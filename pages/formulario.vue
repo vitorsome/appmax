@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header>Cadastrar Item</Header>
+    <Header>{{ this.title }}</Header>
     <div class="container-form">
       <input type="hidden" :value="item.id" id="itemId"/>
       <div>
@@ -10,25 +10,29 @@
         <InputText id="description" label="Descrição" placeholder="Descrição do produto" :value="item.description"></InputText>
       </div>
       <div>
-        <InputText id="price" label="Valor" placeholder="Preço do produto" :value="item.price"></InputText>
+        <InputText id="price" label="Valor" placeholder="Preço do produto" :value="item.price" type="number"></InputText>
       </div>
     </div>
     <div class="center">
+      <ButtonSecondary text="Cancelar" link="/"></ButtonSecondary>
       <ButtonPrimary text="Salvar" @button-primary-clicked="saveItem"></ButtonPrimary>
     </div>
+   
   </div>
 </template>
 <script>
 import Header from '../components/shared/Header.vue';
 import InputText from '../components/shared/InputText.vue';
 import ButtonPrimary from '../components/shared/ButtonPrimary.vue';
+import ButtonSecondary from '../components/shared/ButtonSecondary.vue';
 import Item from '../src/Item.js';
 
 export default {
   name: 'IndexPage',
   data() {
     return {
-      item: new Item()
+      item: new Item(),
+      title: 'Cadastrar Item'
     }
   },
   methods: {
@@ -61,12 +65,14 @@ export default {
   mounted() {
     if (this.$route.query.edit) {
       this.item.get(this.$route.query.edit);
+      this.title = 'Editar Item';
     }
   },
   components: {
       Header,
       InputText,
-      ButtonPrimary
+      ButtonPrimary,
+      ButtonSecondary
   }
 }
 </script>

@@ -1,8 +1,7 @@
 <template>
   <div>
-    <button @click="emitClick">
+    <button>
       <NuxtLink v-if="link" :to="link">{{ text }}</NuxtLink>
-      <span v-else>{{ text }}</span>
     </button>
   </div>
 </template>
@@ -13,17 +12,12 @@ export default {
   data () {
     return {}
   },
-  methods: {
-    emitClick() {
-      this.$emit('button-primary-clicked');
-    }
-  },
-  name: 'ButtonPrimary'
+  name: 'ButtonSecondary'
 }
 </script>
-<style lang="scss">
-$background-button-primary: #A83A2CB2;
-$font-button-primary: #FFF;
+<style lang="scss" scoped>
+$background-button-primary: #FFF;
+$font-button-primary: #A83A2CB2;
 
 button {
   background-color: $background-button-primary;
@@ -33,8 +27,8 @@ button {
   border: 0;
   min-width: 130px;
   height: 40px;
+  margin: 10px 50px;
   cursor: pointer;
-  margin: 10px 0;
   &:hover {
     opacity: 0.9;
   }
