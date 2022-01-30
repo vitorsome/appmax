@@ -22,6 +22,7 @@
 </template>
 <script>
 import ItemList from '../src/ItemList.js';
+import Item from '../src/Item.js';
 
 export default {
   data () {
@@ -30,8 +31,10 @@ export default {
     }
   },
   methods: {
-    deleteItem() {
-
+    deleteItem(item) {
+      Item.delete(item.target.closest('tr').id);
+      let itemList = new ItemList();
+      this.items = itemList.get();
     }
   },
   mounted() {

@@ -77,4 +77,14 @@ export default class Item {
         this._description = items[0].description;
         this._price = items[0].price;
     }
+
+    static delete(id) {
+        let savedItems = JSON.parse(localStorage.getItem('itens'));
+        let toSave = savedItems.filter(item => {
+            if (item.id != id) {
+                return item;
+            }
+        });
+        localStorage.setItem('itens', JSON.stringify(toSave));
+    }
 }

@@ -13,11 +13,4 @@ export default class ItemList {
         return items;
     }
 
-    deleteItem(id) {
-        let items = [];
-        if (this._items) {
-            items = JSON.parse(savedItems);
-        }
-    }
-
 }
