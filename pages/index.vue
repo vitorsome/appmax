@@ -13,6 +13,7 @@
 import Header from '../components/shared/Header.vue'
 import ButtonPrimary from '../components/shared/ButtonPrimary.vue'
 import DataTable from '../components/Datatable.vue'
+
 export default {
   name: 'IndexPage',
   components: {

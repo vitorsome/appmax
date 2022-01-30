@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button>
+    <button @click="emitClick">
       <NuxtLink v-if="link" :to="link">{{ text }}</NuxtLink>
       <span v-else>{{ text }}</span>
     </button>
@@ -12,6 +12,11 @@ export default {
   props: ['text', 'link'],
   data () {
     return {}
+  },
+  methods: {
+    emitClick() {
+      this.$emit('button-primary-clicked');
+    }
   },
   name: 'ButtonPrimary'
 }

@@ -1,19 +1,19 @@
 <template>
 <table class="table">
   <tbody>
-    <tr v-for="item in items" :key="item.title" class="row-item">
+    <tr v-for="item in items" :key="item.title" class="row-item" :id="item.id">
       <td></td>
       <td>
           <div>
-              <div class="title">{{ item.title }}</div>
+              <div class="title">{{ item.name }}</div>
               <div class="description">{{ item.description }}</div>
           </div>
       </td>
       <td class="price">{{ item.price }}</td>
       <td>
           <div class="controllers">
-              <img src="../assets/icon-pen.svg"/>
-              <img src="../assets/icon-trash.svg"/>
+              <NuxtLink :to="{name:'formulario', query:{edit: item.id}}"><img src="../assets/icon-pen.svg"/></NuxtLink>
+              <img src="../assets/icon-trash.svg" @click="deleteItem"/>
           </div>
       </td>
     </tr>
@@ -21,22 +21,22 @@
 </table>
 </template>
 <script>
+import ItemList from '../src/ItemList.js';
+
 export default {
   data () {
     return {
-      items: [
-        {
-            title:'Batata Frita',
-            description: '50g de batata frita com bacon',
-            price: 50.50
-        },
-        {
-            title:'Pizza Média',
-            description: '50g borda recheada',
-            price: 70.50
-        }
-      ]
+      items: []
     }
+  },
+  methods: {
+    deleteItem() {
+
+    }
+  },
+  mounted() {
+    let itemList = new ItemList();
+    this.items = itemList.get();
   },
   name: 'DataTable'
 }
